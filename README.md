@@ -1,79 +1,149 @@
-# Programming Fundamentals I — Lab 11
+# Programming Fundamentals I — Lab 13
 
-## Method Overloading and More Dice Rolls
+## Sphere
 
-Due date: 11:59 p.m. the night before the next lab meeting
+Due date: December 6, 2023 at 11:59 p.m.
 
 ---
 
 ## Purpose
 
-To expand on our dice rolling simulation, we’ll consider cases where the amount and kinds of dice depend on inputs to the program. Imagine an application with an interface that lets a user specify how many dice to roll and the type of dice (D6, D20, etc.). This program emphasizes the following concept:
+This lab builds on the Circle class by introducing the Sphere class. This is the most complex ending lab of the semester, so attention to detail is important. This lab focuses on the following concepts:
 
-• Overloading methods
-
----
-
-## In‑Class 11
-
-Let’s practice a simple case of method overloading. Prepare a program that includes two versions of an `add` method: one that performs mathematical addition, and one that performs String concatenation.
-
-- The first `add` method takes two doubles as arguments and returns a double equal to the sum of the two parameters.
-- The second `add` method takes two Strings as arguments and returns a String that concatenates the first parameter with a space and then the second parameter.
-
-After implementing these two methods, test both in `main` by printing sample outputs. For example:
-
-```
-Adding 250 and 500 gives: 750.0
-Combining words ‘Hello’ and ‘world’ gives: Hello world
-```
+• Writing your own custom class  
+• Constructing an object of a custom class  
+• Calling methods on an object
 
 ---
 
-## Lab 11 Task: MoreDiceRolls
+## In‑Class 13: The Cube Class
 
-Create a project called `MoreDiceRolls_FirstName_LastName` or `Lab11_FirstName_LastName`. Remember to include comments summarizing the program.
+In addition to representing two-dimensional shapes with classes like Circle or Rectangle, we can expand to three-dimensional shapes. Let's consider a Cube class with the following UML class diagram:
 
-The steps below follow a bottom‑up implementation. Methods implemented earlier will be used later. Make sure the three custom methods you implement all have the same name (i.e., you are overloading the method). You may use either `java.util.Random` or `Math.random()`.
+```
+┌─────────────────┐
+│      Cube       │
+├─────────────────┤
+│ - side: double  │
+├─────────────────┤
+│ + Cube()        │
+│ + Cube(double)  │
+│ + getSide(): double │
+│ + setSide(double): void │
+│ + getSurfaceArea(): double │
+│ + getVolume(): double │
+└─────────────────┘
+```
 
-### Step 1 — Roll a single six‑sided die
+Every object of Cube will need a \`side\` field to specify the dimensions of that cube. The class has two constructors: a no-args constructor and a parameterized constructor. To get certain properties of Cube objects, the \`getSurfaceArea\` and \`getVolume\` methods have been included. And to set the side of a Cube object after construction, the \`setSide\` method has been included.
 
-- Implement a method that rolls one six‑sided die.
-- Parameters: none
-- Returns: `int` result in the range 1–6 (inclusive)
+### Important: Two-File Structure
 
-### Step 2 — Roll a single die with any number of sides
+Just like the main Lab 13 task, this in-class exercise uses **TWO separate files**:
 
-- Implement a method that rolls one die with any number of sides.
-- Parameters: one `int` specifying the number of sides
-- Returns: `int` result in the range 1–numberOfSides (inclusive)
+1. **Cube_FirstName_LastName.java** - Contains the Cube class definition (fields, constructors, and methods)
+2. **CubeTester_FirstName_LastName.java** - Contains the main method to test the Cube class
 
-### Step 3 — Roll two dice and sum them
+This structure mirrors exactly what you'll do in Lab 13 with \`Sphere.java\` and \`SphereDemo.java\`.
 
-- Implement a method that rolls two dice, each of which may have any number of sides.
-- Parameters: two `int` values specifying the number of sides for each die
-- Returns: `int` equal to the sum of the two results
+### Instructions
 
-### Step 4 — Use the methods in main
+1. In \`Cube_FirstName_LastName.java\`, implement all the fields, constructors, and methods shown in the UML diagram above.
+2. In \`CubeTester_FirstName_LastName.java\`, write code in the main method to:
+   - Create a Cube object using one of the constructors
+   - Call and print the results of \`getSide()\`, \`getSurfaceArea()\`, and \`getVolume()\`
+   - Use \`setSide()\` to change the cube's side length
+   - Print the new side, surface area, and volume
 
-In your `main` method:
+### How to Compile and Run the In-Class Exercise
 
-1. Print the result of calling each of the three methods. For the second and third calls, use `(20)` and `(6, 6)`, respectively.
-2. After the three print statements, declare an `int` variable to count how many times you roll snake eyes (two 1s) when using two six‑sided dice.
-3. Create a loop to perform 10,000 rolls using the third method. Increment the snake‑eyes counter whenever the result is 2.
-4. After the rolls, print the probability of rolling snake eyes.
+```bash
+# Compile both files together:
+javac Cube_FirstName_LastName.java CubeTester_FirstName_LastName.java
+
+# Run the tester program:
+java CubeTester_FirstName_LastName
+```
+
+---
+
+## Lab 13 Task: Sphere
+
+Create a project called \`Sphere_FirstName_LastName\` or \`Lab13_FirstName_LastName\`. The program will consist of two files: \`Sphere.java\` and \`SphereDemo.java\`. Remember to include comments summarizing the program in the files that you implement.
+
+### UML Class Diagram for Sphere
+
+Review the UML class diagram provided below for the Sphere class. Keep in mind that this diagram specifies the fields and methods of the class, including the data types of fields and parameters and the return types of methods.
+
+```
+┌─────────────────────────┐
+│        Sphere           │
+├─────────────────────────┤
+│ - radius: double        │
+├─────────────────────────┤
+│ + Sphere()              │
+│ + Sphere(double)        │
+│ + getRadius(): double   │
+│ + setRadius(double): void │
+│ + getSurfaceArea(): double │
+│ + getVolume(): double   │
+└─────────────────────────┘
+```
+
+### Step 1 — Declare the radius field
+
+In the \`Sphere.java\` class, declare the \`radius\` field specified in the UML class diagram.
+
+### Step 2 — Implement the constructors
+
+In the \`Sphere.java\` class, write method definitions for both constructors:
+
+- **No-args constructor**: Sets the radius to the value of 1.
+- **Parameterized constructor**: Takes one parameter \`newRadius\` and sets the radius to the value of \`newRadius\`.
+
+### Step 3 — Implement the getter and setter methods
+
+Implement the following methods:
+
+- **getRadius()**: Returns the current radius of the sphere.
+- **setRadius(double newRadius)**: Sets the radius to the value of \`newRadius\`.
+
+### Step 4 — Implement the calculation methods
+
+Implement the following methods:
+
+- **getSurfaceArea()**: Returns the surface area of the sphere, calculated using the formula:  
+  A = 4 × π × r²
+
+- **getVolume()**: Returns the volume of the sphere, calculated using the formula:  
+  V = 4/3 × π × r³
+
+### Step 5 — Implement the main method in SphereDemo.java
+
+In the \`main\` method of \`SphereDemo.java\`, do the following:
+
+1. Construct an object of the Sphere class with the radius set to 5.
+2. Use the \`getRadius\` method to print the radius of the Sphere object to the console. Include a statement indicating this is the radius.
+3. Use the \`getSurfaceArea\` method to print the surface area of the Sphere object to the console. Include a statement indicating this is the surface area.
+4. Use the \`getVolume\` method to print the volume of the Sphere object to the console. Include a statement indicating this is the volume.
+5. Use the \`setRadius\` method to change the radius to 7.5.
+6. Use the \`getRadius\` method to print the new radius.
+7. Use the \`getSurfaceArea\` method to print the surface area with the new radius.
+8. Use the \`getVolume\` method to print the volume with the new radius.
 
 ---
 
 ## Example Output
 
-Your exact results will vary because rolls are random. Example flow:
+The following is the expected output from the main method:
 
 ```
-The result of rolling a single six-sided die is 4
-The result of rolling a single twenty-sided die is 8
-The result of rolling two six-sided dice is 6
-The probability of rolling snake eyes is 2.84%.
+The radius of the sphere is 5.0
+The surface area of the sphere is 314.1592653589793
+The volume of the sphere is 523.5987755982989
+The radius of the sphere is 7.5
+The surface area of the sphere is 706.8583470577034
+The volume of the sphere is 1767.1458676442585
 ```
 
 ---
@@ -84,22 +154,25 @@ Make sure you have the following in your program:
 
 • Comments describing this program — 5 points
 
-• Properly implementing the first custom method — 9 points
-   - Method header — 3 points
-   - Method body — 6 points
+• The field of the Sphere class — 3 points
 
-• Properly implementing the second custom method — 16 points
-   - Method header — 6 points
-   - Method body — 10 points
+• The two constructors of the Sphere class — 16 points
+   - No-args constructor — 8 points
+   - Parameterized constructor — 8 points
 
-• Properly implementing the third custom method — 30 points
-   - Method header — 8 points
-   - Method body — 22 points
+• The getRadius method of the Sphere class — 4 points
 
-• Properly implementing the main method — 40 points
-   - First three print statements — 9 points
-   - Variable declaration and loop — 25 points
-   - Last print statement — 6 points
+• The getSurfaceArea method of the Sphere class — 15 points
+
+• The getVolume method of the Sphere class — 15 points
+
+• The setRadius method of the Sphere class — 4 points
+
+• The main method of the program — 30 points
+   - Constructing Sphere object — 5 points
+   - Printing initial radius, surface area, and volume — 9 points
+   - Setting new radius — 4 points
+   - Printing new radius, surface area, and volume — 12 points
 
 ---
 
@@ -108,23 +181,18 @@ Make sure you have the following in your program:
 From a terminal in VS Code (macOS, zsh):
 
 ```bash
-# Compile (replace with your actual file name):
-javac Lab11_FirstName_LastName.java
+# Compile both files:
+javac Sphere.java SphereDemo.java
 
-# Or if you used the alternate name:
-javac MoreDiceRolls_FirstName_LastName.java
-
-# Run (match the class name you compiled):
-java Lab11_FirstName_LastName
-# or
-java MoreDiceRolls_FirstName_LastName
+# Run the demo program:
+java SphereDemo
 ```
 
 ---
 
 ## Screenshots
 
-Please upload at least one screenshot of your console output. You can use the example outputs to show the correct corresponding behavior or use your own input/rolls.
+Please upload at least one screenshot of your console output showing the expected output as demonstrated in the example above.
 
 ---
 
@@ -134,5 +202,4 @@ Please upload at least one screenshot of your console output. You can use the ex
 2. Verify on GitHub that your latest commit is present and your filenames follow the required convention.
 3. Submit your repository URL to Blackboard to complete the assignment.
 
-Good luck, and have fun rolling! 🎲
-
+Good luck with the final lab of the semester! 🌐
