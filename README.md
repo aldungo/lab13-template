@@ -2,7 +2,7 @@
 
 ## Sphere
 
-Due date: December 6, 2023 at 11:59 p.m.
+Due date: December 6, 2025 at 11:59 p.m.
 
 ---
 
