@@ -2,7 +2,7 @@
 
 ## Sphere
 
-**Due Date:** December 6, 2025 @ 11:59 p.m.
+**Due Date:** May 5, 2026 @ 11:59 p.m.
 
 **Submission:** Push to GitHub repository + Submit link to Blackboard
 
