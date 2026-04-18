@@ -8,7 +8,7 @@
  * @date November 25, 2025
  */
 
-public class CubeTester_FirstName_LastName {
+public class CubeTester {
     
     /**
      * Main method to test the Cube class
